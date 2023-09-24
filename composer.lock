@@ -1,0 +1,123 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "a1ddb93423731fab5c14c0c6f8d15f85",
+    "packages": [
+        {
+            "name": "indieweb/rel-me",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/indieweb/rel-me.git",
+                "reference": "705b15f6e91f314fd26d5962dcf00fc117e42965"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/indieweb/rel-me/zipball/705b15f6e91f314fd26d5962dcf00fc117e42965",
+                "reference": "705b15f6e91f314fd26d5962dcf00fc117e42965",
+                "shasum": ""
+            },
+            "require": {
+                "mf2/mf2": "^0.5",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "barnabywalters/mf-cleaner": "dev-master",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "RelMe.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Functions for discovering, consuming and verifying rel-me microformat",
+            "support": {
+                "issues": "https://github.com/indieweb/rel-me/issues",
+                "source": "https://github.com/indieweb/rel-me/tree/v0.1.1"
+            },
+            "time": "2022-10-08T21:02:51+00:00"
+        },
+        {
+            "name": "mf2/mf2",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/microformats/php-mf2.git",
+                "reference": "ddc56de6be62ed4a21f569de9b80e17af678ca50"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/microformats/php-mf2/zipball/ddc56de6be62ed4a21f569de9b80e17af678ca50",
+                "reference": "ddc56de6be62ed4a21f569de9b80e17af678ca50",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+                "mf2/tests": "dev-master#e9e2b905821ba0a5b59dab1a8eaf40634ce9cd49",
+                "phpcompatibility/php-compatibility": "^9.3",
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "^3.6.2"
+            },
+            "suggest": {
+                "barnabywalters/mf-cleaner": "To more easily handle the canonical data php-mf2 gives you",
+                "masterminds/html5": "Alternative HTML parser for PHP, for better HTML5 support."
+            },
+            "bin": [
+                "bin/fetch-mf2",
+                "bin/parse-mf2"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Mf2/Parser.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC0-1.0"
+            ],
+            "authors": [
+                {
+                    "name": "Barnaby Walters",
+                    "homepage": "http://waterpigs.co.uk"
+                }
+            ],
+            "description": "A pure, generic microformats2 parser — makes HTML as easy to consume as a JSON API",
+            "keywords": [
+                "html",
+                "microformats",
+                "microformats 2",
+                "parser",
+                "semantic"
+            ],
+            "support": {
+                "issues": "https://github.com/microformats/php-mf2/issues",
+                "source": "https://github.com/microformats/php-mf2/tree/v0.5.0"
+            },
+            "time": "2022-02-10T01:05:27+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "indieweb/rel-me": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

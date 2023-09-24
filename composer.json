@@ -1,0 +1,13 @@
+{
+    "name": "ben/mastodon-followed-blogs",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Ben Werdmuller",
+            "email": "ben@benwerd.com"
+        }
+    ],
+    "require": {
+        "indieweb/rel-me": "dev-master"
+    }
+}
