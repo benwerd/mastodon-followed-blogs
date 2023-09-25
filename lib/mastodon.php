@@ -176,6 +176,7 @@
               $feed = strtolower($feed);
               if ($feed_to_use) break;
               if (!substr_count($feed, 'http')) continue;
+              if (substr_count($feed, 'android-app://')) continue;
               if (substr_count($feed, '/comments')) continue;
               if (substr_count($feed, 'wp-json')) continue;
               if (in_array($feed, $unique_feeds)) continue;
