@@ -4,7 +4,8 @@ Takes your exported CSV of accounts you follow on Mastodon and returns both a CS
 
 ## Installation
 
-Run `composer install`
+1. Open terminal and navigate to the folder where you have downloaded this code
+2. Run `composer install`
 
 ## Use
 
