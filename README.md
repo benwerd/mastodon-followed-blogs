@@ -10,6 +10,6 @@ Takes your exported CSV of accounts you follow on Mastodon and returns both a CS
 ## Use
 
 1. Download your CSV of followed accounts from Mastodon. (Settings -> Import and Export)
-2. Run `php parse-csv.php {input filename}`
+2. Run `php parse-csv.php {input filename} {Mastodon instance domain}` (eg `php parse-csv.php input.csv mastodon.social`)
 3. Wait a long time
 4. Use `output.csv` or `output.opml` to import feeds into your favorite software

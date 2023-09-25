@@ -86,6 +86,7 @@
     'zencaster.com',
     'codepen.io',
     'blubrry.com',
+    'tumblr.com',
     'api.',
     'shop.',
     '/videos',
@@ -126,15 +127,32 @@
     return false;
   }
 
-  function get_blogs_or_websites_from_username($username) {
+  function get_blogs_or_websites_from_username($username, $instance) {
     $links = [];
-    $profile_url = convert_username_to_url($username);
+
+    $query_url = 'https://' . $instance . '/api/v1/accounts/lookup?acct=';
+
+    if (!filter_var($query_url, FILTER_VALIDATE_URL)) die ('Instance domain does not appear to be valid.');
+
     try {
-      $contents = @file_get_contents($profile_url);
+      $contents = @file_get_contents($query_url . urlencode($username));
       if (!empty($contents)) {
-        $rel_me_links = \IndieWeb\relMeLinks($contents, $profile_url);
-        foreach($rel_me_links as $link) {
-          if (!is_silo($link)) $links[] = $link;
+        $data = json_decode($contents);
+        if ($data) {
+          if (!empty($data->fields)) {
+            foreach($data->fields as $field) {
+              if (substr_count($field->value, '<a')) {
+                $a = new SimpleXMLElement($field->value);
+                if (!empty($a['href'])) {
+                  $a['href'] = trim(strtolower($a['href']));
+                  if (!is_silo($a['href']) && !in_array($a['href'], $links)) {
+                    $links[] = $a['href'];
+                    echo "{$a['href']}\n";
+                  }
+                }
+              }
+            }
+          }
         }
       }
     } catch(Exception $e) {
@@ -143,12 +161,11 @@
     return $links;
   }
 
-  function get_websites_from_usernames($usernames) {
+  function get_websites_from_usernames($usernames, $instance) {
     $websites = [];
     foreach($usernames as $username) {
-      $urls = get_blogs_or_websites_from_username($username);
+      $urls = get_blogs_or_websites_from_username($username, $instance);
       foreach($urls as $url) {
-        echo "{$url}\n";
         if (filter_var($url, FILTER_VALIDATE_URL)) {
           $url = trim(strtolower($url));
           if (substr_count($url, '/') < 6 && strlen($url) <= 80) { // Over 6 slashes or 80 chars and we usually have ourselves an article, not a blog
@@ -195,6 +212,6 @@
     return $blogs;
   }
 
-  function get_blogs_from_usernames($usernames) {
-    return get_blogs_from_websites(get_websites_from_usernames($usernames));
+  function get_blogs_from_usernames($usernames, $instance) {
+    return get_blogs_from_websites(get_websites_from_usernames($usernames, $instance));
   }
