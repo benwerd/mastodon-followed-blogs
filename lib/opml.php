@@ -5,8 +5,8 @@
     $feeds = '';
 
     foreach($blogs as $blog) {
-      if (!empty($blog[1])) {
-        $feeds .= "            <outline text=\"{$blog[1]}\" title=\"{$blog[0]}\" type=\"rss\" xmlUrl=\"{$blog[1]}\" htmlUrl=\"{$blog[0]}\" />\n";
+      if (!empty($blog['feed'])) {
+        $feeds .= "            <outline text=\"{$blog['feed']}\" title=\"{$blog['url']}\" type=\"rss\" xmlUrl=\"{$blog['feed']}\" htmlUrl=\"{$blog['url']}\" />\n";
       }
     }
 

@@ -162,6 +162,7 @@
 
   function get_blogs_from_websites($websites) {
     $blogs = [];
+    $unique_feeds = [];
     foreach($websites as $website) {
       try {
         $contents = @file_get_contents($website);
@@ -170,7 +171,20 @@
           $mf = $parser->parse();
           $feeds = @($mf['rels']['alternate'] ?: array());
           if (!empty($feeds)) {
-            $blogs[] = ['url' => $website, 'feed' => $feeds[0]];
+            $feed_to_use = false;
+            foreach($feeds as $feed) {
+              $feed = strtolower($feed);
+              if ($feed_to_use) break;
+              if (!substr_count($feed, 'http')) continue;
+              if (substr_count($feed, '/comments')) continue;
+              if (substr_count($feed, 'wp-json')) continue;
+              if (in_array($feed, $unique_feeds)) continue;
+              $feed_to_use = $feed;
+            }
+            if (!empty($feed_to_use)) {
+              $unique_feeds[] = $feed_to_use;
+              $blogs[] = ['url' => $website, 'feed' => $feed_to_use];
+            }
           }
         }
       } catch (Exception $e) {
