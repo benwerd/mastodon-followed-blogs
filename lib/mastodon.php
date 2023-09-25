@@ -142,7 +142,7 @@
           if (!empty($data->fields)) {
             foreach($data->fields as $field) {
               if (substr_count($field->value, '<a')) {
-                $a = new SimpleXMLElement($field->value);
+                $a = @(new SimpleXMLElement($field->value));
                 if (!empty($a['href'])) {
                   $a['href'] = trim(strtolower($a['href']));
                   if (!is_silo($a['href']) && !in_array($a['href'], $links)) {
